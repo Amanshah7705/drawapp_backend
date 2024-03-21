@@ -13,7 +13,7 @@ const httpServer = createServer(app);
 
 const io = new Server(httpServer, {
   cors: {
-    origin: "*",
+    origin: "https://drawer-frontend.vercel.app/",
     allowedHeaders: ["my-custom-header"],
     credentials: true,
   },
