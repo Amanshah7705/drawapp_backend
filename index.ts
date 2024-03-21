@@ -4,12 +4,16 @@ import { createServer } from "http";
 import cors from "cors";
 import { colorAndSize, coordinates } from "./returnType";
 const app = express();
-app.use(cors());
+app.use(cors(
+  {
+    origin:"*"
+  }
+));
 const httpServer = createServer(app);
 
 const io = new Server(httpServer, {
   cors: {
-    origin: "https://drawer-frontend.vercel.app/",
+    origin: "*",
     allowedHeaders: ["my-custom-header"],
     credentials: true,
   },
