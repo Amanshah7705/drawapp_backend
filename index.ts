@@ -14,10 +14,12 @@ const httpServer = createServer(app);
 const io = new Server(httpServer, {
   cors: {
     origin: "https://drawer-frontend.vercel.app",
-    allowedHeaders: ["my-custom-header"],
+    methods: ["GET", "POST"], // Add the HTTP methods you intend to use
+    allowedHeaders: ["Authorization", "Content-Type"], // Add any custom headers you need
     credentials: true,
   },
 });
+
 io.on("connection", (socket) => {
   socket.on("beginPath", (Coordinates: coordinates) => {
     socket.broadcast.emit("beginPath", Coordinates);
